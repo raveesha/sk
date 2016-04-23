@@ -4,7 +4,7 @@ var crypto = require('crypto');
 var salt = 'DYhG93b0fIxfs2guVoUubasdfajfkljasdjfaklsdjflakrfWwvniR2G0FgaC9mi';
 
 module.exports = function(sequelize, DataTypes) {
-  const User = sequelize.define('User', {
+  var User = sequelize.define('User', {
     id: {
       type: DataTypes.INTEGER(11),
       autoIncrement: true,
@@ -53,7 +53,7 @@ module.exports = function(sequelize, DataTypes) {
   }, {
     instanceMethods: {
       verifyPassword: function verifyPassword(password, cb) {
-        const hashedPass = crypto
+        var hashedPass = crypto
           .createHash('md5')
           .update(salt + password)
           .digest('hex');
