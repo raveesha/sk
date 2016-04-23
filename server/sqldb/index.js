@@ -9,7 +9,6 @@ var path = require('path');
 var config = require('../config/environment');
 var Sequelize = require('sequelize');
 
-console.log(config.mysql)
 var db = {
   Sequelize:Sequelize,
   sequelize: new Sequelize(

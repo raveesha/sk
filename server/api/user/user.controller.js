@@ -51,18 +51,24 @@ function handleEntityNotFound(res) {
   };
 }
 
-function handleError(res, statusCode) {
+function handleError(res, statusCode,err) {
+  console.log(err)
   statusCode = statusCode || 500;
-  return function(err) {
-    res.status(statusCode).send(err);
-  };
+  res.status(statusCode).send(err);
 }
 
 // Gets a list of Users
 exports.index =  function (req, res) {
   db.User.findAll()
     .then(respondWithResult(res))
-    .catch(handleError(res));
+    .catch(function(err){ handleError(res,500,err)});
+}
+
+// Check email and phone exists
+exports.checkExists = function(req,res){
+    db.User.checkExists( db,req.query.email, req.query.mobile).then(function(status){
+    res.json(status)
+    }).catch(function(err){ handleError(res,500,err)})
 }
 
 // Gets a single User from the DB
@@ -74,14 +80,14 @@ exports.show = function(req, res) {
   })
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
-    .catch(handleError(res));
+    .catch(function(err){ handleError(res,500,err)});
 }
 
 // Creates a new User in the DB
 exports.create =function(req, res) {
   db.User.create(req.body)
     .then(respondWithResult(res, 201))
-    .catch(handleError(res));
+    .catch(function(err){ handleError(res,500,err)});
 }
 
 // Updates an existing User in the DB
@@ -97,7 +103,7 @@ exports.update =function(req, res) {
     .then(handleEntityNotFound(res))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
-    .catch(handleError(res));
+    .catch(function(err){ handleError(res,500,err)});
 }
 
 // Deletes a User from the DB
@@ -109,5 +115,5 @@ exports.destroy= function (req, res) {
   })
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
-    .catch(handleError(res));
+    .catch(function(err){ handleError(res,500,err)});
 }

@@ -37,16 +37,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
     },
     mobile: {
-      type: DataTypes.INTEGER(15),
-      validate: {
-        isInt: {
-          msg: 'number field should be an integer',
-        },
-        len: {
-          args: [0, 15],
-          msg: 'Maximum length for number field is 15',
-        },
-      },
+      type: DataTypes.STRING(15),
       allowNull: false,
     },
 
@@ -73,6 +64,31 @@ module.exports = function(sequelize, DataTypes) {
       associate: function associate(models) {
 
 
+      },
+      checkEmailExiists: function(models,email){
+        if (!models) return Promise.reject({code: 500, desc: "checkEmailExiists: models not found"})
+        if (!email) return Promise.reject({code: 500, desc: "checkEmailExiists: email not found"})
+        return models.User.count({ where: {email: email}}).then(function(rows){
+          if (rows > 0) return Promise.resolve(true)
+          return Promise.resolve(false)
+        })
+      },
+      checkMobileExiists: function(models,mobile){
+        if (!models) return Promise.reject({code: 500, desc: "checkMobileExiists: models not found"})
+        if (!mobile) return Promise.reject({code: 500, desc: "checkMobileExiists: mobile not found"})
+        return models.User.count({ where: {mobile: mobile}}).then(function(rows){
+          if (rows > 0) return Promise.resolve(true)
+          return Promise.resolve(false)
+        })
+      },
+      checkExists: function(models, email, mobile){
+        // TODO Validatio for email id and phone number for same job
+
+        return Promise.all([
+              email ? models.User.checkEmailExiists(models, email) : Promise.resolve(false),
+              mobile ? models.User.checkMobileExiists(models,  mobile) : Promise.resolve(false)
+            ])
+            .then(function(rePr){ return {email: rePr[0], mobile: rePr[1]} })
       },
     },
 
