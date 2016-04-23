@@ -19,8 +19,8 @@ var db = {
 
 //// Quarc - Insert models below
 db.User = db.sequelize.import('../api/user/user.model');
-
-
+db.Chain = db.sequelize.import('../api/chain/chain.model');
+db.Hotel = db.sequelize.import('../api/hotel/hotel.model');
 
 Object.keys(db).forEach(function model(modelName) {
   if ('associate' in db[modelName]) {
