@@ -12,6 +12,7 @@ module.exports = function(app) {
 
   app.use('/api/users', require('./api/user'));
   app.use('/api/chains', require('./api/chain'));
+  app.use('/api/chains', require('./api/chain/hotel'));
   app.use('/api/hotels', require('./api/hotel'));
 
   // mongo

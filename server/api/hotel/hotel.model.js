@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
 
     classMethods: {
       associate: function associate(models) {
+        //Hotel.belongsTo()
+        Hotel.belongsTo(models.Chain, {
+          foreignKey: 'chain_id',
+        });
 
 
       },
