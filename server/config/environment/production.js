@@ -13,24 +13,14 @@ module.exports = {
   process.env.PORT ||
   8080,
 
-  mongo: {
-    uri: 'mongodb://qnotify:0413b0c7eff14b4c5dcc326d61a67670@dokku-mongo-qnotify:27017/qnotify'
+  mysql:{
+    db: process.env.MYSQL_DB,
+    user:process.env.MYSQL_USER,
+    pass:process.env.MYSQL_PASS,
+    host: process.env.MYSQL_HOST,
+    dialect: 'mysql',
+    logging: true,
+    timezone: '+05:30',
   },
-
-  GCM_API_KEY: 'AIzaSyBtzd979liGa3_ysmy-rlf-ppaCPFB6toE',
-
-  query:{
-    limit: 20, // pagination default limit
-  },
-
-  statsd: {
-    host: 'cloud.quezx.com',
-    port: 8125,
-    prefix: 'qnotify'
-  },
-
-  quarc: {
-    NOTIFICATION_PAGE_URL: "https://staging.quezx.com/Notifications"
-  }
 
 };

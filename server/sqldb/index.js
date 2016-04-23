@@ -29,7 +29,7 @@ Object.keys(db).forEach(function model(modelName) {
   }
 });
 
-db.sequelize.sync().then(function(suc)P console.log("mysql sync success")})
+db.sequelize.sync().then(function(suc){ console.log("mysql sync success")})
   .catch(console.error)
 
 module.exports = db;
