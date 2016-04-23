@@ -1,7 +1,7 @@
 'use strict';
 
-const crypto = require('crypto');
-const salt = 'DYhG93b0fIxfs2guVoUubasdfajfkljasdjfaklsdjflakrfWwvniR2G0FgaC9mi';
+var crypto = require('crypto');
+var salt = 'DYhG93b0fIxfs2guVoUubasdfajfkljasdjfaklsdjflakrfWwvniR2G0FgaC9mi';
 
 module.exports = function(sequelize, DataTypes) {
   const User = sequelize.define('User', {
