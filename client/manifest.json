@@ -1,0 +1,12 @@
+{
+  "name": "Quezx",
+  "short_name": "QNotify",
+  "icons": [{
+    "src": "/img/quezx-png-logo.png",
+    "sizes": "192x192"
+  }],
+  "start_url": "/",
+  "display": "standalone",
+  "gcm_sender_id": "689513674253",
+  "gcm_user_visible_only": true
+}
