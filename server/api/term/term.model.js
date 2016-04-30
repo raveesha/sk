@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function(sequelize, DataTypes) {
-  var Hotel = sequelize.define('Hotel', {
+  var Term = sequelize.define('Term', {
     id: {
       type: DataTypes.INTEGER(11),
       autoIncrement: true,
@@ -9,27 +9,22 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
     },
-    name: {
-      type: DataTypes.STRING(100),
-      validate: {
-        len: {
-          args: [0, 100],
-          msg: 'Maximum length for name field is 100',
-        },
-      },
-      allowNull: false,
-    },
-  }, {
+    word: DataTypes.STRING(100),
+    gender:DataTypes.STRING(100),
+    kan_meaning:DataTypes.STRING(100),
+    San_meaning:DataTypes.STRING(100),
+    Book_ref:DataTypes.STRING(100),
+    Vyutpatti:DataTypes.STRING(100),
+    Ashtadhyayi_Sutra_Ref:DataTypes.STRING(100),
+  },
+
+    {
     instanceMethods: {
 
     },
 
     classMethods: {
       associate: function associate(models) {
-        //Hotel.belongsTo()
-        Hotel.belongsTo(models.Chain, {
-          foreignKey: 'chain_id',
-        });
 
 
       },
@@ -47,6 +42,6 @@ module.exports = function(sequelize, DataTypes) {
     },
   });
 
-  return Hotel;
+  return Term;
 }
 

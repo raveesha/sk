@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./hotel.controller');
+var controller = require('./sWordsPratyaya.controller.js');
 
 var router = express.Router();
 

@@ -57,16 +57,17 @@ function handleError(res, statusCode,err) {
   res.status(statusCode).send(err);
 }
 
-// Gets a list of Hotels
+// Gets a list of SWordsPratyayas
 exports.index =  function (req, res) {
-  db.Hotel.findAll()
+  console.log("www")
+  db.SWordsPratyaya.findAll()
     .then(respondWithResult(res))
     .catch(function(err){ handleError(res,500,err)});
 }
 
-// Gets a single Hotel from the DB
+// Gets a single SWordsPratyaya from the DB
 exports.show = function(req, res) {
-  db.Hotel.find({
+  db.SWordsPratyaya.find({
     where: {
       id: req.params.id
     }
@@ -76,19 +77,19 @@ exports.show = function(req, res) {
     .catch(function(err){ handleError(res,500,err)});
 }
 
-// Creates a new Hotel in the DB
+// Creates a new SWordsPratyaya in the DB
 exports.create =function(req, res) {
-  db.Hotel.create(req.body)
+  db.SWordsPratyaya.create(req.body)
     .then(respondWithResult(res, 201))
     .catch(function(err){ handleError(res,500,err)});
 }
 
-// Updates an existing Hotel in the DB
+// Updates an existing SWordsPratyaya in the DB
 exports.update =function(req, res) {
   if (req.body.id) {
     delete req.body.id;
   }
-  db.Hotel.find({
+  db.SWordsPratyaya.find({
     where: {
       id: req.params.id
     }
@@ -99,9 +100,9 @@ exports.update =function(req, res) {
     .catch(function(err){ handleError(res,500,err)});
 }
 
-// Deletes a Hotel from the DB
+// Deletes a SWordsPratyaya from the DB
 exports.destroy= function (req, res) {
- db.Hotel.find({
+ db.SWordsPratyaya.find({
     where: {
       _id: req.params.id
     }

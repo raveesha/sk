@@ -12,8 +12,13 @@ module.exports = function(app) {
 
   app.use('/api/users', require('./api/user'));
   app.use('/api/chains', require('./api/chain'));
-  app.use('/api/chains', require('./api/chain/hotel'));
-  app.use('/api/hotels', require('./api/hotel'));
+  //app.use('/api/chains', require('./api/chain/hotel'));
+  app.use('/api/sanskritWords', require('./api/sanskritWord'));
+  app.use('/api/kannadaWords', require('./api/kannadaWord'));
+  app.use('/api/sanskritKannadas', require('./api/sanskritKannada'));
+  app.use('/api/sanskritPratyayas', require('./api/sanskritPratyaya'));
+  app.use('/api/sWordsPratyayas', require('./api/sWordsPratyaya'));
+
 
   // mongo
   //app.use('/api/subscriptions', require('./api/subscription'));
